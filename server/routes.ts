@@ -28,4 +28,17 @@ export function registerRoutes(app: Express) {
       res.status(500).json({ error: "Server error" });
     }
   });
+
+  app.get("/api/registrations", async (_req, res) => {
+    try {
+      const result = await db.select()
+        .from(registrations)
+        .orderBy(registrations.createdAt);
+
+      res.json(result);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Server error" });
+    }
+  });
 }
