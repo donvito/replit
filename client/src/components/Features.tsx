@@ -3,23 +3,23 @@ import { Building2, Users, Shield, Zap } from "lucide-react";
 
 const features = [
   {
-    title: "Smart Workspace",
-    description: "AI-powered workspace optimization for maximum productivity",
+    title: "Project-Based Learning",
+    description: "Build real applications using modern web frameworks",
     icon: Building2,
   },
   {
-    title: "Team Collaboration",
-    description: "Seamless communication and project management tools",
+    title: "Expert Mentorship",
+    description: "Get guidance from experienced industry professionals",
     icon: Users,
   },
   {
-    title: "Enterprise Security",
-    description: "Bank-grade security for your sensitive data",
+    title: "Career Support",
+    description: "Interview preparation and job placement assistance",
     icon: Shield,
   },
   {
-    title: "Lightning Fast",
-    description: "Optimized performance for instant responses",
+    title: "Live Sessions",
+    description: "Interactive weekly sessions and code reviews",
     icon: Zap,
   },
 ];

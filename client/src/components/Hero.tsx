@@ -14,11 +14,11 @@ export function Hero() {
       <div className="relative container mx-auto px-4 py-32">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-6xl font-bold tracking-tight mb-6 animate-fade-in">
-            Transform Your Workspace
+            Master Web Development
           </h1>
           <p className="text-xl text-muted-foreground mb-8">
-            Join the waitlist for the next generation of collaborative workspace solutions.
-            Be the first to experience the future of work.
+            Join the waitlist for our comprehensive web development course.
+            Learn modern frameworks and build real-world applications.
           </p>
           <Button
             size="lg"

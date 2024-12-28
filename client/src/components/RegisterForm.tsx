@@ -48,7 +48,7 @@ export function RegisterForm() {
     <section id="register" className="py-24 bg-background">
       <div className="container mx-auto px-4 max-w-lg">
         <h2 className="text-4xl font-bold text-center mb-12">
-          Join the Waitlist
+          Reserve Your Spot
         </h2>
         
         <Form {...form}>
