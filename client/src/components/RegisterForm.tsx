@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 
 export function RegisterForm() {
   const { toast } = useToast();
-  
+
   const form = useForm<Omit<InsertRegistration, "id" | "createdAt">>({
     resolver: zodResolver(insertRegistrationSchema.omit({ id: true, createdAt: true })),
     defaultValues: {
@@ -45,52 +45,42 @@ export function RegisterForm() {
   });
 
   return (
-    <section id="register" className="py-24 bg-background">
-      <div className="container mx-auto px-4 max-w-lg">
-        <h2 className="text-4xl font-bold text-center mb-12">
-          Reserve Your Spot
-        </h2>
-        
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit((data) => mutation.mutate(data))} className="space-y-6">
-            <FormField
-              control={form.control}
-              name="fullName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Full Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="John Doe" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="john@example.com" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <Button
-              type="submit"
-              className="w-full"
-              disabled={mutation.isPending}
-            >
-              {mutation.isPending ? "Registering..." : "Join Waitlist"}
-            </Button>
-          </form>
-        </Form>
-      </div>
-    </section>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit((data) => mutation.mutate(data))} className="space-y-4">
+        <FormField
+          control={form.control}
+          name="fullName"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder="Full Name" className="h-12" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder="Email Address" className="h-12" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <Button
+          type="submit"
+          className="w-full h-12"
+          disabled={mutation.isPending}
+        >
+          {mutation.isPending ? "Joining..." : "Join Waitlist"}
+        </Button>
+      </form>
+    </Form>
   );
 }

@@ -8,7 +8,6 @@ export default function LandingPage() {
     <div className="min-h-screen">
       <Hero />
       <Features />
-      <RegisterForm />
       <Testimonials />
     </div>
   );

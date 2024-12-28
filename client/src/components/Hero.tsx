@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { RegisterForm } from "./RegisterForm";
 
 const studentAvatars = [
   "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=32&h=32&fit=crop&crop=faces",
@@ -56,15 +57,8 @@ export function Hero() {
               Join thousands of developers using AI to build better software, faster than ever before.
             </p>
 
-            <div className="flex items-center gap-4 w-full max-w-md">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="h-12"
-              />
-              <Button size="lg" className="h-12 px-8">
-                Join Waitlist
-              </Button>
+            <div className="w-full max-w-md">
+              <RegisterForm />
             </div>
 
             <div className="flex items-center gap-8 mt-12">
