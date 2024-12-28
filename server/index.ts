@@ -23,10 +23,10 @@ app.use((req, res, next) => {
   const path = req.path;
   let capturedJsonResponse: Record<string, any> | undefined = undefined;
 
-  const originalResJson = res.json;
-  res.json = function (bodyJson, ...args) {
+  const originalResJson = res.json.bind(res);
+  res.json = function (bodyJson: Record<string, any>) {
     capturedJsonResponse = bodyJson;
-    return originalResJson.apply(res, [bodyJson, ...args]);
+    return originalResJson(bodyJson);
   };
 
   res.on("finish", () => {
@@ -52,29 +52,46 @@ app.use((req, res, next) => {
   registerRoutes(app);
   const server = createServer(app);
 
-  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-    const status = err.status || err.statusCode || 500;
+  app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
+    const status = (err as any).status || (err as any).statusCode || 500;
     const message = err.message || "Internal Server Error";
 
     res.status(status).json({ message });
     throw err;
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on port 5000
-  // this serves both the API and the client
-  const PORT = process.env.PORT || 3000;
-  server.listen(PORT, "0.0.0.0", () => {
-    log(`serving on port ${PORT}`);
-  }).on('error', (err: Error) => {
-    log(`Error starting server: ${err.message}`);
-  });
+  const startServer = (port: number) => {
+    return new Promise<void>((resolve, reject) => {
+      server.listen(port, "0.0.0.0")
+        .once('listening', () => {
+          log(`serving on port ${port}`);
+          resolve();
+        })
+        .once('error', (err: NodeJS.ErrnoException) => {
+          if (err.code === 'EADDRINUSE') {
+            log(`Port ${port} is in use, trying next port`);
+            server.close();
+            startServer(port + 1)
+              .then(resolve)
+              .catch(reject);
+          } else {
+            reject(err);
+          }
+        });
+    });
+  };
+
+  try {
+    const initialPort = Number(process.env.PORT) || 5000;
+    await startServer(initialPort);
+  } catch (err) {
+    log(`Error starting server: ${(err as Error).message}`);
+    process.exit(1);
+  }
 })();
