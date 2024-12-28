@@ -5,19 +5,19 @@ const testimonials = [
   {
     name: "Sarah Johnson",
     role: "CEO at TechCorp",
-    image: "https://images.unsplash.com/photo-1576558656222-ba66febe3dec",
+    image: "https://images.unsplash.com/photo-1576558656222-ba66febe3dec?w=150&h=150&fit=crop&crop=faces",
     content: "This platform has revolutionized how we work. Can't wait for the full release!",
   },
   {
     name: "David Chen",
     role: "Product Manager",
-    image: "https://images.unsplash.com/photo-1554774853-b415df9eeb92",
+    image: "https://images.unsplash.com/photo-1554774853-b415df9eeb92?w=150&h=150&fit=crop&crop=faces",
     content: "The features and functionality are exactly what we've been looking for.",
   },
   {
     name: "Emily Williams",
     role: "Team Lead",
-    image: "https://images.unsplash.com/photo-1554774853-6a56f62c6451",
+    image: "https://images.unsplash.com/photo-1554774853-6a56f62c6451?w=150&h=150&fit=crop&crop=faces",
     content: "Finally, a solution that understands modern workplace needs.",
   },
 ];
@@ -29,7 +29,7 @@ export function Testimonials() {
         <h2 className="text-4xl font-bold text-center mb-12">
           What People Are Saying
         </h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <Card key={index} className="transition-all duration-300 hover:shadow-lg">
