@@ -88,7 +88,7 @@ app.use((req, res, next) => {
   };
 
   try {
-    const initialPort = Number(process.env.PORT) || 5000;
+    const initialPort = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
     await startServer(initialPort);
   } catch (err) {
     log(`Error starting server: ${(err as Error).message}`);
