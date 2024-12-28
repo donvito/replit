@@ -48,7 +48,7 @@ export function Hero() {
                 ))}
               </div>
               <p className="text-sm text-muted-foreground">
-                Joined by <span className="font-medium text-foreground">5,000+</span> students
+                Join people waiting in the waitlist
               </p>
             </div>
 
