@@ -60,7 +60,7 @@ export function Hero() {
               Join thousands of developers using AI to build better software, faster than ever before.
             </p>
 
-            <div className="w-full max-w-md">
+            <div id="waitlist-form" className="w-full max-w-md">
               <RegisterForm />
             </div>
 

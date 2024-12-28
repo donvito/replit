@@ -67,7 +67,9 @@ export function Features() {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full">Buy Now</Button>
+                <Button className="w-full" asChild>
+                  <a href="#waitlist-form">Join Waitlist</a>
+                </Button>
               </CardContent>
             </Card>
           ))}
