@@ -4,6 +4,9 @@ import { registrations } from "@db/schema";
 import { eq } from "drizzle-orm";
 
 export function registerRoutes(app: Express) {
+  app.get("/api/hello", (_req, res) => {
+    res.json({ message: "Hello from the API!" });
+  });
   app.post("/api/register", async (req, res) => {
     try {
       const { fullName, email } = req.body;
