@@ -17,16 +17,19 @@ export function Hero() {
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-full bg-primary"></div>
-            <span className="font-bold text-lg">DonvitoCodes Learn</span>
+            <a 
+              href="https://donvitocodes.com" 
+              className="font-bold text-lg hover:text-primary transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              DonvitoCodes Learn
+            </a>
           </div>
           <div className="hidden md:flex items-center gap-8">
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground">Courses</a>
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground">About</a>
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground">Contact</a>
-          </div>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" className="text-sm">Sign In</Button>
-            <Button className="text-sm">Get Started</Button>
           </div>
         </div>
       </nav>
